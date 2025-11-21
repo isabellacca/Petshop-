@@ -1,0 +1,300 @@
+/* 1. CONFIGURAÇÃO GERAL (Reset Simples) */
+/* Aplica essas regras para TODOS os elementos (*) */
+* {
+    margin: 0; /* Remove margens externas padrão */
+    padding: 0; /* Remove preenchimento interno padrão */
+    box-sizing: border-box; /* Faz com que o padding e a borda não aumentem o tamanho total do elemento */
+    font-family: 'Arial', sans-serif; /* Define a fonte padrão */
+}
+
+/* 2. VARIÁVEIS DE CORES (Organização) */
+/* ":root" é onde definimos as variáveis que serão usadas em todo o CSS */
+:root {
+    /* Cores do Tema */
+    --cor-principal: #4682B4; /* Azul Aço (Para títulos e fundo escuro) */
+    --cor-acento-fofo: #FFB6C1; /* Rosa Claro (Para destaques e botões fofos) */
+    --cor-fundo-site: #a6b7da; /* Cinza Claro (Fundo principal do site) */
+    --cor-texto: #333333; /* Preto Suave */
+    --cor-botao-verde: #98FB98; /* Verde Menta (Para botões de ação/comprar) */
+}
+
+/* 3. CORPO DO SITE (BODY) */
+body {
+    background-color: var(--cor-fundo-site); /* Aplica o cinza claro no fundo */
+    color: var(--cor-texto); /* Define a cor padrão do texto */
+    line-height: 1.6; /* Espaçamento entre as linhas do texto */
+}
+
+/* 4. TÍTULOS */
+h1, h2, h3, h4 {
+    color: var(--cor-principal); /* Deixa os títulos em Azul Aço */
+    margin-bottom: 15px;
+}
+
+/* 5. LINKS (A) */
+a {
+    text-decoration: none; /* Remove o sublinhado padrão dos links */
+    color: var(--cor-principal);
+    transition: color 0.3s; /* Suaviza a troca de cor ao passar o mouse */
+}
+a:hover {
+    color: var(--cor-acento-fofo); /* Muda para Rosa Claro ao passar o mouse */
+}
+
+/* 6. CAIXA PRINCIPAL (CONTAINER) */
+.container {
+    max-width: 1200px; /* Largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza a caixa na tela */
+    padding: 0 20px; /* Espaçamento interno nas laterais */
+}
+
+/* 7. SEÇÕES DE CONTEÚDO */
+.secao-conteudo {
+    padding: 80px 0; /* Espaçamento interno grande em cima e embaixo */
+    text-align: center; /* Centraliza o texto e os itens internos */
+}
+
+/* --- BOTÕES --- */
+
+/* 8. BOTÃO DE DESTAQUE (Rosa Arredondado) */
+.btn-acao {
+    display: inline-block; /* Permite definir tamanho e ficar lado a lado se houver espaço */
+    background-color: var(--cor-acento-fofo);
+    color: var(--cor-texto);
+    padding: 12px 30px;
+    border-radius: 50px; /* Deixa o botão bem redondo */
+    font-weight: bold;
+    text-transform: uppercase; /* Coloca o texto em maiúsculas */
+    transition: background-color 0.3s, transform 0.2s; /* Suaviza as mudanças */
+    margin-top: 20px;
+}
+
+.btn-acao:hover {
+    background-color: #FFC0CB; /* Fica um rosa um pouco mais forte */
+    transform: translateY(-2px); /* Efeito de "subir" um pouco */
+}
+
+/* 9. BOTÃO DE COMPRA (Verde Menta) */
+.btn-comprar {
+    display: inline-block;
+    background-color: var(--cor-botao-verde);
+    color: var(--cor-texto);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.btn-comprar:hover {
+    background-color: #7FFF7F; /* Fica um verde mais claro */
+}
+
+
+/* --- CABEÇALHO (TOPO DO SITE) --- */
+
+.cabecalho {
+    display: flex; /* Ativa o Flexbox para organizar os itens lado a lado */
+    justify-content: space-between; /* Espaça o logo de um lado e o menu do outro */
+    align-items: center; /* Alinha os itens verticalmente no meio */
+    padding: 15px 50px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave embaixo */
+}
+
+.logo-area h1 {
+    margin: 0;
+    font-size: 2em; /* Tamanho do título do logo */
+}
+
+.menu-navegacao a {
+    margin-left: 25px; /* Espaço entre os links */
+    font-size: 1.1em;
+}
+
+.btn-contato {
+    background-color: var(--cor-acento-fofo);
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: var(--cor-texto);
+    font-weight: bold;
+}
+
+/* Botão de Menu para Celulares (Ícone Hambúrguer) */
+.menu-toggle {
+    display: none; /* Esconde este botão em telas grandes */
+    background: none;
+    border: none;
+    color: var(--cor-principal);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+
+/* --- SEÇÃO PRINCIPAL (BANNER GRANDE) --- */
+
+.secao-principal {
+    /* Define a Imagem de Fundo */
+    background: url('hero-pet.jpg') no-repeat center center/cover;
+    min-height: 70vh; /* Altura mínima de 70% da tela */
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    text-align: center;
+    position: relative; /* É o pai do "::before" (camada escura) */
+    color: white;
+    padding: 20px;
+}
+
+/* Camada escura/suave para dar contraste no texto */
+.secao-principal::before {
+    content: '';
+    position: absolute; /* Posição absoluta dentro do pai (.secao-principal) */
+    top: 0; left: 0; right: 0; bottom: 0; /* Ocupa todo o espaço do pai */
+    background: rgba(0, 0, 0, 0.2); /* Fundo preto transparente (20%) */
+}
+
+.hero-conteudo {
+    position: relative;
+    z-index: 10; /* Garante que o conteúdo fique por cima da camada escura */
+    max-width: 800px;
+}
+
+.hero-conteudo h2 {
+    color: white;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra no texto */
+}
+
+.hero-conteudo p {
+    color: white;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+
+/* --- SEÇÃO DE SERVIÇOS (LAYOUT EM COLUNAS) --- */
+
+.servicos-grid {
+    display: grid; /* Ativa o Grid Layout */
+    grid-template-columns: repeat(3, 1fr); /* Cria 3 colunas iguais (1fr) */
+    gap: 30px; /* Espaço entre os itens da grade */
+    margin-top: 40px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.servico-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.servico-item:hover {
+    transform: translateY(-5px); /* Efeito de "subir" um pouco */
+    border: 2px solid var(--cor-acento-fofo); /* Borda rosa ao passar o mouse */
+}
+
+.servico-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+
+/* --- SEÇÃO DE PRODUTOS (FUNDO AZUL) --- */
+
+.secao-produtos {
+    background-color: var(--cor-principal);
+    color: white;
+}
+
+.secao-produtos h3 {
+    color: var(--cor-acento-fofo); /* Título em Rosa de Destaque */
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.produto-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    color: var(--cor-texto);
+    text-align: left;
+}
+
+.produto-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.produto-card .preco {
+    font-weight: bold;
+    color: var(--cor-principal);
+    margin: 10px 0;
+}
+
+
+/* --- RODAPÉ --- */
+
+.rodape {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 20px;
+    font-size: 0.9em;
+}
+
+
+/* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
+
+/* Telas de Tablets (Até 900px de largura) */
+@media (max-width: 900px) {
+    .servicos-grid, .produtos-grid {
+        grid-template-columns: repeat(2, 1fr); /* Muda para 2 colunas */
+    }
+}
+
+/* Telas de Celulares (Até 600px de largura) */
+@media (max-width: 600px) {
+    .cabecalho {
+        padding: 15px 20px;
+    }
+    .servicos-grid, .produtos-grid {
+        grid-template-columns: 1fr; /* Muda para 1 coluna (empilha os itens) */
+    }
+    
+    /* Configura o menu para telas pequenas */
+    .menu-navegacao {
+        display: none; /* Esconde o menu normal */
+        flex-direction: column; /* Coloca os links em coluna */
+        width: 100%;
+        position: absolute; /* Posiciona o menu abaixo do cabeçalho */
+        top: 60px; 
+        left: 0;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .menu-navegacao a {
+        margin: 0;
+        padding: 10px 20px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+    }
+    .menu-toggle {
+        display: block; /* Mostra o botão de menu (hambúrguer) */
+    }
+    .menu-navegacao.active { 
+        display: flex; /* O JavaScript vai adicionar a classe 'active' para mostrar o menu */
+    }
+}
